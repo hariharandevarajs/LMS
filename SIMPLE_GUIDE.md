@@ -27,15 +27,18 @@ This will install all required packages (Express, PostgreSQL driver, etc.)
 
 #### Option A: Using Supabase (Recommended for Beginners)
 
+**📖 For detailed step-by-step instructions, see [SUPABASE_CONNECTION_GUIDE.md](SUPABASE_CONNECTION_GUIDE.md)**
+
+Quick steps:
 1. Go to [supabase.com](https://supabase.com) and create a free account
-2. Create a new project
+2. Create a new project (set a strong database password!)
 3. Go to **Settings** → **Database**
 4. Copy your connection details:
-   - Host (looks like: `db.xxxxx.supabase.co`)
-   - Database name (usually `postgres`)
-   - Port (usually `5432`)
-   - User (usually `postgres`)
-   - Password (the one you set when creating the project)
+   - **For Connection Pooling (Recommended):** Use the pooling connection string (port `6543`)
+   - **For Direct Connection:** Host (looks like: `db.xxxxx.supabase.co`), Port `5432`
+   - Database name: `postgres`
+   - User: `postgres`
+   - Password: The one you set when creating the project
 
 #### Option B: Using Local PostgreSQL
 
