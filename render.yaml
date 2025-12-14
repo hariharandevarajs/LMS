@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: lms
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    # Add your environment variables in Render dashboard
+    # DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT
+    # ADMIN_EMAIL, ADMIN_PASSWORD, SESSION_SECRET
+

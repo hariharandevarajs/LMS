@@ -4,6 +4,10 @@
   "private": true,
   "description": "Simple lead management app with landing form and admin dashboard (Node.js + PostgreSQL)",
   "main": "server/app.js",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
   "scripts": {
     "start": "node server/app.js",
     "dev": "nodemon server/app.js"
