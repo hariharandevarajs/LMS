@@ -63,22 +63,42 @@ Before deploying, make sure:
 
 In your Render dashboard, go to **Environment** tab and add:
 
+**Option A: Use Connection Pooling (Recommended - Fixes IPv6 issues)**
+
+Get the connection pooling URL from Supabase:
+1. Supabase Dashboard → Settings → Database → Connection Pooling
+2. Copy the connection string (looks like: `postgresql://postgres.xxxxx:6543/postgres`)
+
+Then add to Render:
+```
+DATABASE_URL=postgresql://postgres.xxxxx:6543/postgres?pgbouncer=true
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=your-secure-password
+SESSION_SECRET=generate-a-random-secret-here
+```
+
+**Option B: Individual Variables (Use Pooling Port)**
+
 ```
 PORT=10000
-DB_HOST=db.your-project.supabase.co
-DB_USER=postgres
+DB_HOST=aws-0-us-east-1.pooler.supabase.com
+DB_USER=postgres.xxxxx
 DB_PASSWORD=your-supabase-password
 DB_NAME=postgres
-DB_PORT=5432
+DB_PORT=6543
+DB_SSL=true
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=your-secure-password
 SESSION_SECRET=generate-a-random-secret-here
 ```
 
 **Important:** 
+- Use port `6543` for connection pooling (fixes IPv6 connection issues)
+- Port `5432` is for direct connections (may have network issues on Render)
 - Render automatically sets `PORT`, but you can set it to `10000` as backup
-- Use your actual Supabase credentials
 - Generate a strong `SESSION_SECRET` (use: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`)
+
+**⚠️ If you get connection errors, see `DEPLOYMENT_FIX.md` for troubleshooting**
 
 ### Step 4: Deploy
 
