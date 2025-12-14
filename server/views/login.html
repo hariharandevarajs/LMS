@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>Admin Login</h1>
+        </div>
+    </header>
+    <main class="container">
+        <section class="card">
+            <form id="login-form">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required />
+                <div class="mt-24">
+                    <button type="submit" class="btn">Login</button>
+                </div>
+            </form>
+            <div id="toast" style="display:none;margin-top:12px"></div>
+        </section>
+    </main>
+    <script>
+      const form = document.getElementById('login-form');
+      const toast = document.getElementById('toast');
+      function showToast(message, ok = true) {
+        toast.style.display = 'block';
+        toast.textContent = message;
+        toast.style.color = ok ? '#9fffb2' : '#ffb3b3';
+      }
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        const res = await fetch('/api/login', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          showToast(body.message || 'Login failed', false);
+          return;
+        }
+        location.href = '/dashboard';
+      });
+    </script>
+</body>
+</html>
+
+

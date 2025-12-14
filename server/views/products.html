@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | Palm Jaggery</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Our Products</h1>
+      <nav style="margin-top:8px">
+        <a class="btn" href="/home">Home</a>
+        <a class="btn" href="/products">Products</a>
+        <a class="btn" href="/about">About</a>
+        <a class="btn" href="/contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <section class="card">
+      <div class="grid">
+        <div class="product">
+          <div class="media">
+            <img data-q="palm jaggery 1kg" src="https://via.placeholder.com/800x600?text=Loading..." alt="Palm jaggery blocks 1 kg" />
+          </div>
+          <div class="body">
+            <h3>Palm Jaggery 1 kg</h3>
+            <p class="price">₹ 350</p>
+            <p>Pure, natural palm jaggery block. Ideal for daily use.</p>
+            <a class="btn" href="/contact?product=Palm%20Jaggery%201kg">Enquire</a>
+          </div>
+        </div>
+        <div class="product">
+          <div class="media">
+            <img data-q="palm jaggery 5kg" src="https://via.placeholder.com/800x600?text=Loading..." alt="Palm jaggery bulk 5 kg" />
+          </div>
+          <div class="body">
+            <h3>Palm Jaggery 5 kg</h3>
+            <p class="price">₹ 1,600</p>
+            <p>Bulk pack for households and small businesses.</p>
+            <a class="btn" href="/contact?product=Palm%20Jaggery%205kg">Enquire</a>
+          </div>
+        </div>
+        <div class="product">
+          <div class="media">
+            <img data-q="palm jaggery 10kg" src="https://via.placeholder.com/800x600?text=Loading..." alt="Palm jaggery sacks 10 kg" />
+          </div>
+          <div class="body">
+            <h3>Palm Jaggery 10 kg</h3>
+            <p class="price">₹ 3,000</p>
+            <p>Value pack for larger requirements.</p>
+            <a class="btn" href="/contact?product=Palm%20Jaggery%2010kg">Enquire</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      async function loadImages(){
+        const imgs = document.querySelectorAll('img[data-q]');
+        for(const img of imgs){
+          const q = img.getAttribute('data-q');
+          try{
+            const res = await fetch(`/api/images?q=${encodeURIComponent(q)}`);
+            const body = await res.json();
+            if (res.ok && body.url) {
+              img.src = body.url;
+            } else {
+              img.removeAttribute('data-q');
+            }
+          } catch(e){
+            img.removeAttribute('data-q');
+          }
+        }
+      }
+      document.addEventListener('DOMContentLoaded', loadImages);
+    </script>
+  </main>
+</body>
+</html>
+
+

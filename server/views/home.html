@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palm Jaggery | Home</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Palm Jaggery</h1>
+      <nav style="margin-top:8px">
+        <a class="btn" href="/home">Home</a>
+        <a class="btn" href="/products">Products</a>
+        <a class="btn" href="/about">About</a>
+        <a class="btn" href="/contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-media">
+        <img id="hero-img" src="https://images.unsplash.com/photo-1609982019942-2b1e1eb93d0d?w=1920&auto=format&fit=crop" alt="Palm trees and natural sugar imagery" onerror="this.src='https://via.placeholder.com/1920x720/1a2332/5b8cff?text=Palm+Jaggery';this.onerror=null;" />
+      </div>
+      <div class="hero-content">
+        <div class="card">
+          <h2>Natural, Healthy Sweetener</h2>
+          <p>Pure palm jaggery sourced from trusted farms. Available in 1 kg, 5 kg, and 10 kg packs.</p>
+          <p class="mt-16"><a class="btn" href="/products">Shop Products</a> <a class="btn" style="margin-left:8px;background:#2a2f45" href="/contact">Contact Us</a></p>
+        </div>
+      </div>
+    </section>
+    <script>
+      // Try to fetch from Google Images API if available, otherwise use Unsplash
+      (async function() {
+        const img = document.getElementById('hero-img');
+        try {
+          const res = await fetch('/api/images?q=palm+jaggery+natural+sweetener');
+          const data = await res.json();
+          if (res.ok && data.url) {
+            img.src = data.url;
+          }
+        } catch(e) {
+          // Fallback to Unsplash already set in img src
+        }
+      })();
+    </script>
+  </main>
+</body>
+</html>
+
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leads Dashboard</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Leads Dashboard</h1>
+    </div>
+  </header>
+  <main class="container">
+    <section class="card mt-26" >
+      <div id="counters" class="row-3" >
+        <div><strong>Total:</strong> <span id="count-total">0</span></div>
+        <div><strong>New:</strong> <span id="count-new">0</span></div>
+        <div><strong>Contacted:</strong> <span id="count-contacted">0</span></div>
+        <div><strong>Qualified:</strong> <span id="count-qualified">0</span></div>
+        <div><strong>Won:</strong> <span id="count-won">0</span></div>
+        <div><strong>Lost:</strong> <span id="count-lost">0</span></div>
+      </div>
+      <div class="mt-26 card" style="background:#0f1430">
+        <h3>Campaign Analytics</h3>
+        <div class="row-3" style="margin-top:16px">
+          <div><strong style="color:#9ecbff">Google Ads:</strong> <span id="campaign-google">0</span></div>
+          <div><strong style="color:#e3b3ff">Meta/Facebook:</strong> <span id="campaign-meta">0</span></div>
+          <div><strong style="color:#9fffb2">Organic:</strong> <span id="campaign-organic">0</span></div>
+          <div><strong style="color:#ffb3b3">Other:</strong> <span id="campaign-other">0</span></div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="statusFilter">Status</label>
+          <select id="statusFilter">
+            <option value="">All</option>
+            <option>New</option>
+            <option>Contacted</option>
+            <option>Qualified</option>
+            <option>Won</option>
+            <option>Lost</option>
+          </select>
+        </div>
+        <div>
+          <label for="search">Search</label>
+          <input type="text" id="search" placeholder="Name, email, company" />
+        </div>
+      </div>
+      <div class="mt-25 table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Company</th>
+              <th>Source</th>
+              <th>Campaign</th>
+              <th>Created</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="leadsBody"></tbody>
+        </table>
+      </div>
+      <div id="pager" class="mt-16"></div>
+      <div id="toast" style="display:none;margin-top:12px"></div>
+      <div class="mt-16">
+        <form id="logoutForm"><button class="btn" type="submit">Logout</button></form>
+      </div>
+    </section>
+  </main>
+  <script src="/static/js/dashboard.js" defer></script>
+</body>
+</html>
+
+

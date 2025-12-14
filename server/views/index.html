@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lead Management - Landing</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>Lead Management</h1>
+        </div>
+    </header>
+    <main class="container">
+        <section class="card">
+            <h2>Get in touch</h2>
+            <form id="lead-form" class="mt-16">
+                <div class="row">
+                    <div>
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+                    <div>
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone" />
+                    </div>
+                    <div>
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="source">How did you hear about us?</label>
+                        <select id="source" name="source">
+                            <option value="Website">Website</option>
+                            <option value="Referral">Referral</option>
+                            <option value="Ads">Ads</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="mt-16">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs..."></textarea>
+                </div>
+                <div class="mt-24">
+                    <button type="submit" class="btn">Submit</button>
+                    <a class="btn" style="margin-left:8px; background:#2a2f45" href="/login">Admin Login</a>
+                </div>
+            </form>
+            <div id="toast" style="display:none;margin-top:12px"></div>
+        </section>
+    </main>
+    <script src="/static/js/landing.js" defer></script>
+  </body>
+  </html>
+
+
