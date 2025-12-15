@@ -52,6 +52,12 @@ app.use((req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   // eslint-disable-next-line no-console
   console.log(`Server listening on port ${PORT}`);
+  console.log(`\n🌐 Access your app at: http://localhost:${PORT}`);
+  console.log(`📊 Admin dashboard: http://localhost:${PORT}/dashboard`);
+  console.log(`\n💡 If you see database connection errors, check:`);
+  console.log(`   1. Supabase project is active (not paused)`);
+  console.log(`   2. Connection credentials in .env file`);
+  console.log(`   3. Run: node update-env-connection.js (for help)`);
 });
 
 
